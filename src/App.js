@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
-import CastCard from ".components/CastCard";
-import Wrapper from ".components/Wrapper";
+import MemberCard from "./components/MemberCard";
+import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
-import cast from "./cast.json";
+import members from "./members.json";
 
 class App extends Component {
   state = {
-    cast
+    members
   };
 
-  removeCast = id => {
-    const casts = this.state.casts.filter(cast => cast.id !== id);
-    this.setState({ casts });
+  removeMember = id => {
+    const members = this.state.members.filter(members => members.id !== id);
+    this.setState({ members });
   };
 
   render() {
     return (
       <Wrapper>
         <Title>Predator</Title>
-        {this.state.casts.map(cast => (
-          <CastCard
-            removeCast={this.removeCast}
-            id={cast.id}
-            key={cast.id}
-            name={cast.name}
-            image={cast.src}
+        {this.state.members.map(members => (
+          <MemberCard
+            removeMember={this.removeMember}
+            id={members.id}
+            key={members.id}
+            name={members.name}
+            src={members.src}
           />
         ))}
       </Wrapper>
