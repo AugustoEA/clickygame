@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import CastCard from ".components/CastCard";
+import Wrapper from ".components/Wrapper";
+import Title from "./components/Title";
+import cast from "./cast.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    cast
+  };
+
+  removeCast = id => {
+    const casts = this.state.casts.filter(cast => cast.id !== id);
+    this.setState({ casts });
+  };
+
+  render() {
+    return (
+      <Wrapper>
+        <Title>Predator</Title>
+        {this.state.casts.map(cast => (
+          <CastCard
+            removeCast={this.removeCast}
+            id={cast.id}
+            key={cast.id}
+            name={cast.name}
+            image={cast.src}
+          />
+        ))}
+      </Wrapper>
+    );
+  }
 }
 
 export default App;
