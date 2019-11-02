@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Predator</Title>
+        <Title>Predator & Friends!</Title>
         {this.state.members.map(members => (
           <MemberCard
             removeMember={this.removeMember}
